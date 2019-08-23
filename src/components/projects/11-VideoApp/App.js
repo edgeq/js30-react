@@ -1,9 +1,12 @@
 import React from "react";
+import VideoPlayer from "./VideoPlayer";
+import "./style.css";
+import video from "./652333414.mp4";
 
 const App = () => {
   return (
     <div className="VideoApp">
-      <h2>Video App Goes Here</h2>
+      <VideoPlayer video={video} />
     </div>
   );
 };
