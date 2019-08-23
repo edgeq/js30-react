@@ -23,7 +23,7 @@ class VideoPlayer extends Component {
   }
 
   skip() {
-    const media = document.querySelector(".viewer");
+    // const media = document.querySelector(".viewer");
   }
 
   render() {
