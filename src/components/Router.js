@@ -1,8 +1,9 @@
+// Boilerplate React + Router
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import VideoApp from "./projects/11-VideoPlayer/App";
-
+// Components to Render
 import App from "./App";
+import VideoApp from "./projects/11-VideoApp/App";
 
 const Router = () => (
   <BrowserRouter>
