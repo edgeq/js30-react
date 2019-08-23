@@ -71,7 +71,7 @@ class VideoPlayer extends Component {
             max="2"
             step="0.1"
             value="1"
-            onChange={this.skip}
+            onChange={() => console.log("clicked")}
           />
           <button className="player__button" onClick={() => this.skip(back)}>
             « 10s
