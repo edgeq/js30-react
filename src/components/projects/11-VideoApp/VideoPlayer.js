@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 
 class VideoPlayer extends Component {
+  static defaultProps = {
+    back: -10,
+    forward: 15
+  };
   constructor(props) {
     super(props);
     this.state = { isPlaying: false };
@@ -22,14 +26,15 @@ class VideoPlayer extends Component {
     toggle.textContent = icon;
   }
 
-  skip() {
-    // const media = document.querySelector(".viewer");
+  skip(playtime) {
+    const media = document.querySelector(".viewer");
+    media.currentTime += playtime;
   }
 
   render() {
-    const { video } = this.props;
+    const { video, forward, back } = this.props;
     const { isPlaying } = this.state;
-    console.log(video);
+    // console.log(video);
     return (
       <div className="player">
         <video
@@ -56,6 +61,7 @@ class VideoPlayer extends Component {
             max="1"
             step="0.05"
             value="1"
+            onChange={() => console.log("clicked")}
           />
           <input
             type="range"
@@ -65,11 +71,12 @@ class VideoPlayer extends Component {
             max="2"
             step="0.1"
             value="1"
+            onChange={this.skip}
           />
-          <button data-skip="-10" className="player__button">
+          <button className="player__button" onClick={() => this.skip(back)}>
             « 10s
           </button>
-          <button data-skip="25" className="player__button">
+          <button className="player__button" onClick={() => this.skip(forward)}>
             25s »
           </button>
         </div>
