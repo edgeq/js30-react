@@ -80,7 +80,6 @@ class VideoPlayer extends Component {
       pbrMin,
       pbrMax
     } = this.state;
-    // console.log(video);
     let mousedown = false;
 
     return (
