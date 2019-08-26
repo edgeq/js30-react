@@ -22,8 +22,8 @@ class VideoPlayer extends Component {
   }
 
   handlePlay() {
-    const media = document.querySelector(".viewer");
-    media.paused ? media.play() : media.pause();
+    // accessed via ref in <video>
+    this.media.paused ? this.media.play() : this.media.pause();
     this.setState({ isPlaying: !this.state.isPlaying });
   }
 
@@ -35,8 +35,7 @@ class VideoPlayer extends Component {
   }
 
   skip(playtime) {
-    const media = document.querySelector(".viewer");
-    media.currentTime += playtime;
+    this.media.currentTime += playtime;
   }
 
   handleRangeSlider(val, name) {
@@ -53,6 +52,22 @@ class VideoPlayer extends Component {
       default:
         break;
     }
+  }
+
+  handleProgress(time, duration) {
+    // console.log(`${time} of ${duration}`);
+    const progressBar = document.querySelector(".progress__filled");
+    const percent = (time / duration) * 100;
+    // console.log(`${percent.toFixed(2)}% played`);
+    progressBar.style.flexBasis = `${percent}%`;
+  }
+
+  scrub(e) {
+    const progress = document.querySelector(".progress");
+
+    const scrubTime =
+      (e.nativeEvent.offsetX / progress.offsetWidth) * this.media.duration;
+    this.media.currentTime = scrubTime;
   }
 
   render() {
@@ -72,10 +87,14 @@ class VideoPlayer extends Component {
         <video
           className="player__video viewer"
           src={video}
+          ref={media => (this.media = media)}
           onClick={this.handlePlay}
+          onTimeUpdate={() =>
+            this.handleProgress(this.media.currentTime, this.media.duration)
+          }
         ></video>
         <div className="player__controls">
-          <div className="progress">
+          <div className="progress" onClick={e => this.scrub(e)}>
             <div className="progress__filled"></div>
           </div>
           <button
