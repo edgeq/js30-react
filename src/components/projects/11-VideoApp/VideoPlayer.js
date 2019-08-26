@@ -7,7 +7,15 @@ class VideoPlayer extends Component {
   };
   constructor(props) {
     super(props);
-    this.state = { isPlaying: false };
+    this.state = {
+      isPlaying: false,
+      volMin: 0,
+      volMax: 1,
+      volume: 1,
+      playbackRate: 1,
+      pbrMin: 0.5,
+      pbrMax: 2
+    };
     this.handlePlay = this.handlePlay.bind(this);
     this.updateButton = this.updateButton.bind(this);
     this.skip = this.skip.bind(this);
@@ -31,9 +39,33 @@ class VideoPlayer extends Component {
     media.currentTime += playtime;
   }
 
+  handleRangeSlider(val, name) {
+    const media = document.querySelector(".viewer");
+    media[name] = val;
+    console.log(val, name);
+    switch (name) {
+      case "volume":
+        this.setState({ volume: val });
+        break;
+      case "playbackRate":
+        this.setState({ playbackRate: val });
+        break;
+      default:
+        break;
+    }
+  }
+
   render() {
     const { video, forward, back } = this.props;
-    const { isPlaying } = this.state;
+    const {
+      isPlaying,
+      volMin,
+      volMax,
+      volume,
+      playbackRate,
+      pbrMin,
+      pbrMax
+    } = this.state;
     // console.log(video);
     return (
       <div className="player">
@@ -57,21 +89,27 @@ class VideoPlayer extends Component {
             type="range"
             name="volume"
             className="player__slider"
-            min="0"
-            max="1"
+            min={volMin}
+            max={volMax}
             step="0.05"
-            value="1"
-            onChange={() => console.log("clicked")}
+            value={volume}
+            ref={vol => (this.vol = vol)}
+            onChange={() =>
+              this.handleRangeSlider(this.vol.value, this.vol.name)
+            }
           />
           <input
             type="range"
             name="playbackRate"
             className="player__slider"
-            min="0.5"
-            max="2"
+            min={pbrMin}
+            max={pbrMax}
             step="0.1"
-            value="1"
-            onChange={() => console.log("clicked")}
+            value={playbackRate}
+            ref={rate => (this.rate = rate)}
+            onChange={() =>
+              this.handleRangeSlider(this.rate.value, this.rate.name)
+            }
           />
           <button className="player__button" onClick={() => this.skip(back)}>
             « 10s
