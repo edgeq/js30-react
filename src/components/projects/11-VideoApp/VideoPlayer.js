@@ -64,7 +64,6 @@ class VideoPlayer extends Component {
 
   scrub(e) {
     const progress = document.querySelector(".progress");
-
     const scrubTime =
       (e.nativeEvent.offsetX / progress.offsetWidth) * this.media.duration;
     this.media.currentTime = scrubTime;
@@ -82,6 +81,8 @@ class VideoPlayer extends Component {
       pbrMax
     } = this.state;
     // console.log(video);
+    let mousedown = false;
+
     return (
       <div className="player">
         <video
@@ -94,7 +95,13 @@ class VideoPlayer extends Component {
           }
         ></video>
         <div className="player__controls">
-          <div className="progress" onClick={e => this.scrub(e)}>
+          <div
+            className="progress"
+            onClick={this.scrub.bind(this)}
+            onMouseDown={() => (mousedown = true)}
+            onMouseUp={() => (mousedown = false)}
+            onMouseMove={e => mousedown && this.scrub(e)}
+          >
             <div className="progress__filled"></div>
           </div>
           <button
