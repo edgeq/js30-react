@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class VideoPlayer extends Component {
   static defaultProps = {
     back: -10,
-    forward: 15
+    forward: 25
   };
   constructor(props) {
     super(props);
