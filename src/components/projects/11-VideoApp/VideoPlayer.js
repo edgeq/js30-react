@@ -97,9 +97,13 @@ class VideoPlayer extends Component {
         <div className="player__controls">
           <div
             className="progress"
+            // inline bind when clicked.
             onClick={this.scrub.bind(this)}
+            // set mouseDown to true
             onMouseDown={() => (mousedown = true)}
+            // set mouseDown to false
             onMouseUp={() => (mousedown = false)}
+            // if mouseMove AND mouseDown, call scrub()
             onMouseMove={e => mousedown && this.scrub(e)}
           >
             <div className="progress__filled"></div>
