@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+// const cornify = require("cornified");
 
 const Konami = () => {
   const pressed = [];
@@ -17,12 +18,28 @@ const Konami = () => {
 
       if (pressed.join("").includes(secretCode)) {
         console.log("DING DING YOU HACKED ME!!!");
+        // cornify.add();
         setKonami(true);
       }
     });
   });
 
-  return <div>{konami ? <h1>HACKED!</h1> : <h1>Enter Secret Code</h1>}</div>;
+  return (
+    <div>
+      {konami ? (
+        <>
+          <h1>HACKED!</h1>
+          <img
+            className="cornify"
+            src="https://raw.github.com/akenn/cornify/master/images/rainbow/2.gif"
+            alt="cornify"
+          />
+        </>
+      ) : (
+        <h1>Enter Secret Code</h1>
+      )}
+    </div>
+  );
 };
 
 export default Konami;
