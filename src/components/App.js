@@ -12,6 +12,9 @@ const App = () => {
         <li>
           <Link to="/VideoApp">VideoApp</Link>
         </li>
+        <li>
+          <Link to="/Konami">Konami Code</Link>
+        </li>
       </ul>
     </div>
   );
