@@ -16,18 +16,13 @@ const Konami = () => {
       );
 
       if (pressed.join("").includes(secretCode)) {
-        console.log("DING DING YOU FOUND ME");
+        console.log("DING DING YOU HACKED ME!!!");
         setKonami(true);
       }
     });
   });
 
-  return (
-    <div>
-      <h1>Open Conosle Log</h1>
-      {konami ? <>HACKED!</> : null}
-    </div>
-  );
+  return <div>{konami ? <h1>HACKED!</h1> : <h1>Enter Secret Code</h1>}</div>;
 };
 
 export default Konami;
