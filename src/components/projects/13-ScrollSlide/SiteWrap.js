@@ -46,7 +46,7 @@ const SiteWrap = ({ altProp }) => {
 
       <img
         src="http://unsplash.it/400/400"
-        class="align-left slide-in"
+        className="align-left slide-in"
         alt={altProp}
       />
 
@@ -67,7 +67,7 @@ const SiteWrap = ({ altProp }) => {
 
       <img
         src="http://unsplash.it/400/401"
-        class="align-right slide-in"
+        className="align-right slide-in"
         alt={altProp}
       />
 
@@ -108,7 +108,7 @@ const SiteWrap = ({ altProp }) => {
 
       <img
         src="http://unsplash.it/200/500"
-        class="align-left slide-in"
+        className="align-left slide-in"
         alt={altProp}
       />
 
@@ -120,7 +120,7 @@ const SiteWrap = ({ altProp }) => {
         eveniet
         <img
           src="http://unsplash.it/200/200"
-          class="align-right slide-in"
+          className="align-right slide-in"
           alt={altProp}
         />
         temporibus doloremque possimus facilis. Possimus labore, officia dolore!
@@ -160,7 +160,7 @@ const SiteWrap = ({ altProp }) => {
 
       <img
         src="http://unsplash.it/400/400"
-        class="align-right slide-in"
+        className="align-right slide-in"
         alt={altProp}
       />
 

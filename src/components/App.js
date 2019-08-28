@@ -4,7 +4,7 @@ import "../index.css";
 
 const App = () => {
   useEffect(() => {
-    document.querySelector("html").classList = "";
+    document.title = "Javascript30 : React";
   }, []);
   return (
     <div className="App">
