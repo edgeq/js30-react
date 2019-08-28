@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 // const cornify = require("cornified");
 
 const Konami = () => {
-  const pressed = [];
-  const secretCode = "edge";
-
   const [konami, setKonami] = useState(false);
 
   useEffect(() => {
+    const pressed = [];
+    const secretCode = "edge";
     window.addEventListener("keyup", e => {
       pressed.push(e.key);
       console.log(pressed);
@@ -17,12 +16,13 @@ const Konami = () => {
       );
 
       if (pressed.join("").includes(secretCode)) {
+        setKonami(true);
         console.log("DING DING YOU HACKED ME!!!");
         // cornify.add();
-        setKonami(true);
       }
     });
-  });
+    // [] tells React that your effect doesn’t depend on any values from props or state, so it never needs to re-run
+  }, []);
 
   return (
     <div>
