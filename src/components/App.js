@@ -19,6 +19,9 @@ const App = () => {
         <li>
           <Link to="/ScrollSlide">Slide on Scroll</Link>
         </li>
+        <li>
+          <Link to="/LocalStorage">Local Storage Tapas</Link>
+        </li>
       </ul>
     </div>
   );
