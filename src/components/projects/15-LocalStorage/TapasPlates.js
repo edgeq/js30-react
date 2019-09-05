@@ -1,13 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 
 const TapasPlates = () => {
+  const [item, setItem] = useState("");
+
+  const handleChange = e => {
+    setItem(e.target.value);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(item);
+    setItem("");
+  };
+
   return (
     <>
-      <ul class="plates">
+      <ul className="plates">
         <li>Loading Tapas...</li>
       </ul>
-      <form class="add-items">
-        <input type="text" name="item" placeholder="Item Name" required />
+      <form className="add-items" onSubmit={handleSubmit}>
+        <input
+          onChange={handleChange}
+          type="text"
+          name="item"
+          placeholder="Item Name"
+          value={item}
+          required
+        />
         <input type="submit" value="+ Add Item" />
       </form>
     </>
